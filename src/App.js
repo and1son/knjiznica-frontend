@@ -1,43 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Knjiga from "./Knjiga"
+
 
 class App extends Component {
-  constructor()
-   {
-      super();
-      this.state={
-        data:[],
+    constructor(){
+      super()
+      this.state =  {
+          knjiga: ''
       }
     }
-  componentDidMount()
-  {
-    fetch('http://localhost:5000/knjiga')
-    .then(res => res.text())
-    .then(text=> console.log(text))
-    /*.then(response => response.json())
-    .then((findresponse)=>
-    {
-      console.log(findresponse.knjiga)
-      this.setState({
-        data:findresponse.knjiga,
-      })
-    })*/
-  }
-  render() 
-  {
-    return (
-      <div>
-        {
-          this.state.data.map((knjiga,key) => 
-            <div>
-              <h2>{knjiga.naslov}</h2>
-          </div>
-          )
-      }
-       </div>     
-    )
-  }
-}
+   
+   componentDidMount(){
+      fetch("http://localhost:5000/knjiga")
+        .then(response=>response.json())
+        .then(data => {
+          this.setState({
+             knjiga : data
+          })
+        })           
+    }
 
-export default App;
+    render() {
+      const { knjiga } = this.state;
+      knjiga && console.log(knjiga.map(item => item.Naslov));
+
+      return (
+        <div>
+          {knjiga &&
+            knjiga.map(item =>  <div> {item.Naslov} </div> )}
+        </div>
+        )
+    }
+  }
+
+  export default App;
