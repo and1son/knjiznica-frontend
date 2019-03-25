@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Knjiga from "./Knjiga"
-
 
 class App extends Component {
     constructor(){
@@ -27,8 +25,28 @@ class App extends Component {
 
       return (
         <div>
-          {knjiga &&
-            knjiga.map(item =>  <div> {item.Naslov} </div> )}
+          <table>
+          <tr>
+            <th> Naslov </th>
+            <th> Zanr </th>
+            <th> Autor </th>
+            <th> nakladnik </th>
+          </tr>
+          <tr>
+            <th>
+            {knjiga &&
+              knjiga.map(item =>  <div> {item.Naslov} </div> )}</th>
+            <th>
+            {knjiga &&
+              knjiga.map(item =>  <div> {item.Zanr} </div> )}</th>
+            <th>
+            {knjiga &&
+              knjiga.map(item =>  <div> {item.Autor} </div> )}</th>
+            <th>
+            {knjiga &&
+              knjiga.map(item =>  <div> {item.nakladnik} </div> )}</th>
+          </tr>
+          </table>
         </div>
         )
     }
