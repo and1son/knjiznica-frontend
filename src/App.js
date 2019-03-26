@@ -1,51 +1,50 @@
 import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
-    constructor(){
+     constructor(){
       super()
       this.state =  {
-          knjiga: ''
+          nakladnik: ''
       }
     }
    
    componentDidMount(){
-      fetch("http://localhost:5000/knjiga")
+      fetch("http://localhost:5000/nakladnik")
         .then(response=>response.json())
         .then(data => {
           this.setState({
-             knjiga : data
+             nakladnik : data
           })
         })           
     }
 
     render() {
-      const { knjiga } = this.state;
-      knjiga && console.log(knjiga.map(item => item.Naslov));
+      const { nakladnik } = this.state;
+      nakladnik && console.log(nakladnik.map(item => item.Naziv));
 
       return (
         <div>
           <table>
+          <tbody>
           <tr>
-            <th> Naslov </th>
-            <th> Zanr </th>
-            <th> Autor </th>
-            <th> nakladnik </th>
+            <th> Sifra </th>
+            <th> Naziv </th>
+            <th> Mjesto </th>
           </tr>
           <tr>
+             <th>
+            {nakladnik &&
+              nakladnik.map(item =>  <div> {item.sifra} </div> )}</th>
             <th>
-            {knjiga &&
-              knjiga.map(item =>  <div> {item.Naslov} </div> )}</th>
+            {nakladnik &&
+              nakladnik.map(item =>  <div> {item.Naziv} </div> )}</th>
             <th>
-            {knjiga &&
-              knjiga.map(item =>  <div> {item.Zanr} </div> )}</th>
-            <th>
-            {knjiga &&
-              knjiga.map(item =>  <div> {item.Autor} </div> )}</th>
-            <th>
-            {knjiga &&
-              knjiga.map(item =>  <div> {item.nakladnik} </div> )}</th>
+            {nakladnik &&
+              nakladnik.map(item =>  <div> {item.Mjesto} </div> )}</th>
           </tr>
+          </tbody>
           </table>
         </div>
         )
