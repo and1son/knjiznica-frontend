@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
-import axios from 'axios';
+import './EditNakladnikForm.js';
+import NakladnikTable from './NakladnikTable';
 
 class App extends Component {
      constructor(){
       super()
       this.state =  {
-          nakladnik: ''
+          nakladnik: [],
+          editing : false,
+          setEditing: false
       }
+      this.handleEdit = this.handleEdit.bind(this)
+
     }
    
    componentDidMount(){
@@ -20,32 +25,27 @@ class App extends Component {
         })           
     }
 
+    handleEdit(sifra){ 
+      this.setState(prevState=>{
+        const updatedNakladnik = prevState.nakladnik.map(item=>{
+          if(item.sifra === sifra){
+            item.Mjesto[0] = "marko"
+          }
+          return item
+        })
+        return{
+          nakladnik : updatedNakladnik
+        }
+      })
+    }
+    
     render() {
+      console.log(this.state.nakladnik)
       const { nakladnik } = this.state;
-      nakladnik && console.log(nakladnik.map(item => item.Naziv));
-
+      const nakladnikPodaci = this.state.nakladnik.map(item => <NakladnikTable key={item.sifra} nakladnik={nakladnik} item={item} handleEdit={this.handleEdit}/>)
       return (
         <div>
-          <table>
-          <tbody>
-          <tr>
-            <th> Sifra </th>
-            <th> Naziv </th>
-            <th> Mjesto </th>
-          </tr>
-          <tr>
-             <th>
-            {nakladnik &&
-              nakladnik.map(item =>  <div> {item.sifra} </div> )}</th>
-            <th>
-            {nakladnik &&
-              nakladnik.map(item =>  <div> {item.Naziv} </div> )}</th>
-            <th>
-            {nakladnik &&
-              nakladnik.map(item =>  <div> {item.Mjesto} </div> )}</th>
-          </tr>
-          </tbody>
-          </table>
+          {nakladnikPodaci}
         </div>
         )
     }
