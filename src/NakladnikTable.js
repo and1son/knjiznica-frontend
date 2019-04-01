@@ -1,7 +1,7 @@
   import React from 'react'
 
 
-  function NakladnikTable(props){
+  const NakladnikTable = (props) =>{
   return(
     <table>
       <thead>
@@ -15,12 +15,11 @@
       </thead>
     <tbody>
 
-    {props.nakladnik && props.nakladnik.map(item => 
-     <tr key={item.sifra}>
-        <td>{item.sifra}</td>
-        <td>{item.Naziv}</td>
-        <td>{item.Mjesto}</td>
-        <td><button onClick={props.handleEdit}> Edit </button></td>
+     <tr key={props.sifra}>
+        <td>{props.sifra}</td>
+        <td>{props.Naziv}</td>
+        <td>{props.Mjesto}</td>
+        <td><button onClick={props.handleUserName}> Edit </button></td>
      </tr>
     )}
     </tbody>

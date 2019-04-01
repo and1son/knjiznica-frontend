@@ -1,21 +1,55 @@
-  import React, { Component } from 'react';
-  import './App.css';
-  import './EditNakladnikForm.js';
-  import NakladnikTable from './NakladnikTable';
-  import axios from 'axios';
-  import Main from './components/Main'
-  import Navbar from './components/Navbar'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import axios from 'axios';
+import NakladnikItem from './NakladnikItem'
 
-  const App = () => (
-      <div>
-        <Navbar />
-        <div className="container">
-          <Main />
-        </div>
-      </div>
-    )
+  class Nakladnik extends Component {
+       constructor(){
+        super()
+        this.state =  {
+          nakladnik: [
+         ]
+      }
+        //this.handleEdit = this.handleEdit.bind(this)
+        //this.handleUserName = this.handleUserName.bind(this)
+      }
 
-    export default App;
+      componentWillMount(){
+        this.getNakladnik()
+      }
+
+      getNakladnik(){
+        axios.get('http://localhost:5000/nakladnik')
+          .then(response => {
+            this.setState({nakladnik : response.data }, () => {
+              //console.log(this.state)
+            })
+          })
+      }
+
+      render(){
+        const nakladniciItem = this.state.nakladnik.map((nakladnik, i) => {
+          return(
+            <NakladnikItem key={nakladnik.sifra} item={nakladnik}/>
+          )
+        })
+        return(
+          <div>
+            <h1> Nakladnici </h1>
+            <ul className="collection">
+              {nakladniciItem}
+            </ul>
+            <div className="fixed-action-btn">
+					<Link to="/nakladnik/dodaj" className="btn-floating btn-large red">
+						<i className="fa fa-plus"></i>
+					</Link>
+			</div>
+          </div>
+          )
+      }
+  }
+
+export default Nakladnik
 
 
 
