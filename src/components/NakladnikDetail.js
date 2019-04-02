@@ -29,6 +29,7 @@ class NakladnikDetail extends Component{
         .catch(err => console.log(err))
 	}
 	render(){
+		let nakladnikId = this.props.match.params.sifra
         const nakladniciDetail = this.state.details.map((detail, i) => {
           return(
             <NakladnikItem key={detail.sifra} item={detail}/>
@@ -37,11 +38,12 @@ class NakladnikDetail extends Component{
         return(
           <div>
           	<br />
-          	<Link className="btn-grey" to="/nakladnik">Back</Link>
+          	<Link className="btn grey" to="/nakladnik">Back</Link>
             <h1> Nakladnik </h1>
             <ul className="collection">
               {nakladniciDetail}
             </ul>
+            <Link className="btn" to={`/nakladnik/edit/${nakladnikId}`}>Edit</Link>
           </div>
           )
       }
