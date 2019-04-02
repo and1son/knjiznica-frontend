@@ -19,12 +19,13 @@ import NakladnikItem from './NakladnikItem'
       }
 
       getNakladnik(){
-        axios.get('http://localhost:5000/nakladnik')
+        axios.get(`http://localhost:5000/nakladnik`)
           .then(response => {
             this.setState({nakladnik : response.data }, () => {
-              //console.log(this.state)
+              console.log(this.state)
             })
           })
+          .catch(err => console.log(err))
       }
 
       render(){
