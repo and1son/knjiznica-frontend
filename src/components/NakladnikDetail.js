@@ -32,7 +32,7 @@ class NakladnikDetail extends Component{
 		    let nakladnikId = this.props.match.params.sifra 
         const nakladniciDetail = this.state.details.map((detail, i) => {
           return(
-            <NakladnikItem key={detail.sifra} item={detail}/>
+            <NakladnikItem key={detail.sifra} sifra={detail.sifra} Naziv={detail.Naziv} Mjesto={detail.Mjesto}/>
           )
         })
         return(

@@ -31,7 +31,7 @@ import NakladnikItem from './NakladnikItem'
       render(){
         const nakladniciItem = this.state.nakladnik.map((nakladnik, i) => {
           return(
-            <NakladnikItem key={nakladnik.sifra} item={nakladnik}/>
+         	<NakladnikItem key={nakladnik.sifra} sifra={nakladnik.sifra} Naziv={nakladnik.Naziv} Mjesto={nakladnik.Mjesto}/>
           )
         })
         return(

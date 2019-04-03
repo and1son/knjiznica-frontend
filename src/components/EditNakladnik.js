@@ -8,9 +8,9 @@ class EditNakladnik extends Component{
     constructor(props){
       super(props)
       this.state = {
-        nakladnik : [],
-        Naziv : '',
-        Mjesto : ''
+        sifra : '',
+        Naziv:'',
+        Mjesto:''
       }
       this.handleInputChange = this.handleInputChange.bind(this)
     }
@@ -24,13 +24,28 @@ class EditNakladnik extends Component{
     axios.get(`http://localhost:5000/nakladnik/${nakladnikId}`)
           .then(response => {
             this.setState({
-              nakladnik : response.data
+              sifra : response.data[0].sifra,
+              Naziv : response.data[0].Naziv,
+              Mjesto : response.data[0].Mjesto
             }, ()=> {
-              console.log(this.state)
+              //console.log(this.state)
+              console.log(response)
             })
           })
         .catch(err => console.log(err))
   }
+
+    editNakladnik(newNakladnik){
+      axios.request({
+        method: 'put',
+        url: `http://localhost:5000/nakladnik/${this.state.sifra}`,
+        data: newNakladnik
+      }).then(response => {
+        this.props.history.push('/nakladnik') //redirectamo jer nam ne treba ništa u then 
+      }).catch(err => console.log(err))
+    }
+
+  
 
     onSubmit(e){
       const newNakladnik = {
@@ -42,41 +57,34 @@ class EditNakladnik extends Component{
       e.preventDefault()
     }
 
-    handleInputChange(e){
-      const target = e.target
-      const value = target.value
-      const name = target.name
+    handleInputChange(event){
+      const {name,value} = event.target
       this.setState({
         [name] : value
       })
     }
 
    render(){
-      const data = this.state.nakladnik
-    
-    return(
-      <div>
-         {data.map((nakladnik,index) => {
+             
             return(
-              <div key={nakladnik.sifra}>
+              <div key={this.state.sifra}>
                 <br />
                 <Link className="btn grey" to="/nakladnik"> Back </Link>
                 <h1> Edit nakladnik </h1>
                 <form onSubmit={this.onSubmit.bind(this)}>
                   <div className="input-field">
-                    <input type="text" name="naziv" ref="naziv" value={nakladnik.Naziv} onChange={this.handleInputChange }/>
+                    <input type="text" name="Naziv" ref="naziv" value={this.state.Naziv} onChange={this.handleInputChange }/>
                     <label htmlFor="naziv" >Naziv</label>
                   </div>
                   <div className="input-field">
-                    <input type="text" name="mjesto" ref="mjesto"  value={nakladnik.Mjesto} onChange={this.handleInputChange}/>
+                    <input type="text" name="Mjesto" ref="mjesto"  value={this.state.Mjesto} onChange={this.handleInputChange}/>
                     <label htmlFor="mjesto" >Mjesto</label>
                   </div>
                   <input type="submit" value="Save" className="btn" />
                 </form>
               </div>   
-          )})}
-         </div>
-         )
+          )
+      
 
         //const {nakladnikNaziv} = this.state
         /*const nakladniciNaziv = this.state.nakladnik.map((nakladnik, i) => {

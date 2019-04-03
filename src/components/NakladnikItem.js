@@ -5,16 +5,18 @@ class NakladnikItem extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			item:props.item
+			sifra:props.sifra,
+			Naziv:props.Naziv,
+			Mjesto:props.Mjesto
 		}
 	}
 	render(){
 		return(
 			<li className="collection-item">
-				<Link to={`/nakladnik/${this.state.item.sifra}`}>
-				{this.state.item.sifra}
-				{this.state.item.Naziv} 
-				{this.state.item.Mjesto}</Link>
+				<Link to={`/nakladnik/${this.state.sifra}`}>
+				{this.state.sifra}
+				{this.state.Naziv} 
+				{this.state.Mjesto}</Link>
 			</li>
 		)
 	}

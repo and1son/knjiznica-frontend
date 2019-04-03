@@ -5,13 +5,13 @@
   import axios from 'axios';
   import Main from './components/Main'
   import Navbar from './components/Navbar'
-
+  //import Post from './Post'
   const App = () => (
       <div>
         <Navbar />
-        <div className="container">
-          <Main />
-        </div>
+          <div className="container">
+            <Main />
+          </div>
       </div>
     )
 
