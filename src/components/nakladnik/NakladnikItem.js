@@ -14,8 +14,11 @@ class NakladnikItem extends Component{
 		return(
 			<li className="collection-item">
 				<Link to={`/nakladnik/${this.state.sifra}`}>
-				{this.state.sifra}
+	    		<span>&nbsp;&nbsp;</span>
+				{this.state.sifra} 
+				<span>&nbsp;&nbsp;</span>	
 				{this.state.Naziv} 
+				<span>&nbsp;&nbsp;</span>
 				{this.state.Mjesto}</Link>
 			</li>
 		)

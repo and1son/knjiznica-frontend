@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import NakladnikItem from './NakladnikItem'
-
 
 class AddNakladnik extends Component{
 

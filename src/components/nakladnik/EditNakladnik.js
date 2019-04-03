@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import NakladnikItem from './NakladnikItem'
-
 
 class EditNakladnik extends Component{
     constructor(props){
@@ -74,11 +72,11 @@ class EditNakladnik extends Component{
                 <form onSubmit={this.onSubmit.bind(this)}>
                   <div className="input-field">
                     <input type="text" name="Naziv" ref="naziv" value={this.state.Naziv} onChange={this.handleInputChange }/>
-                    <label htmlFor="naziv" >Naziv</label>
+                    <label htmlFor="naziv" className="active" >Naziv</label>
                   </div>
                   <div className="input-field">
                     <input type="text" name="Mjesto" ref="mjesto"  value={this.state.Mjesto} onChange={this.handleInputChange}/>
-                    <label htmlFor="mjesto" >Mjesto</label>
+                    <label htmlFor="mjesto" className="active"  >Mjesto</label>
                   </div>
                   <input type="submit" value="Save" className="btn" />
                 </form>
