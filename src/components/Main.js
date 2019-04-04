@@ -9,6 +9,10 @@ import Izdavatelj from './izdavatelj/Izdavatelj'
 import IzdavateljDetail from './izdavatelj/IzdavateljDetail'
 import AddIzdavatelj from './izdavatelj/AddIzdavatelj'
 import EditIzdavatelj from './izdavatelj/EditIzdavatelj'
+import Knjiga from './knjiga/Knjiga'
+import KnjigaDetail from './knjiga/KnjigaDetail'
+import AddKnjiga from './knjiga/AddKnjiga'
+import EditKnjiga from './knjiga/EditKnjiga'
 
 const Main = () => (
 	<main>
@@ -22,6 +26,12 @@ const Main = () => (
 			<Route exact path='/izdavatelj/dodaj' component={AddIzdavatelj} />
 			<Route exact path='/izdavatelj/:sifra' component={IzdavateljDetail} />
 			<Route exact path='/izdavatelj/edit/:sifra' component={EditIzdavatelj} />
+			<Route exact path='/knjiga' component={Knjiga} />
+			<Route exact path='/knjiga/dodaj' component={AddKnjiga} />
+			<Route exact path='/knjiga/:sifra' component={KnjigaDetail} />
+			<Route exact path='/knjiga/edit/:sifra' component={EditKnjiga} />
+
+
 
 		
 
