@@ -13,6 +13,10 @@ import Knjiga from './knjiga/Knjiga'
 import KnjigaDetail from './knjiga/KnjigaDetail'
 import AddKnjiga from './knjiga/AddKnjiga'
 import EditKnjiga from './knjiga/EditKnjiga'
+import Izdavanje from './izdavanje/Izdavanje'
+import IzdavanjeDetail from './izdavanje/IzdavanjeDetail'
+import AddIzdavanje from './izdavanje/AddIzdavanje'
+import EditIzdavanje from './izdavanje/EditIzdavanje'
 
 const Main = () => (
 	<main>
@@ -30,12 +34,10 @@ const Main = () => (
 			<Route exact path='/knjiga/dodaj' component={AddKnjiga} />
 			<Route exact path='/knjiga/:sifra' component={KnjigaDetail} />
 			<Route exact path='/knjiga/edit/:sifra' component={EditKnjiga} />
-
-
-
-		
-
-
+			<Route exact path='/izdavanje' component={Izdavanje} />
+			<Route exact path='/izdavanje/dodaj' component={AddIzdavanje} />
+			<Route exact path='/izdavanje/:sifra' component={IzdavanjeDetail} />
+			<Route exact path='/izdavanje/edit/:sifra' component={EditIzdavanje} />
 		</Switch>
 	</main>
 )

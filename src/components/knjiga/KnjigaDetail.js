@@ -32,7 +32,7 @@ class NakladnikDetail extends Component{
 		    let knjigaId = this.props.match.params.sifra 
         const knjigaDetails = this.state.details.map((detail, i) => {
           return(
-            <KnjigaItem key={detail.sifra} sifra={detail.sifra} Naslov={detail.Naslov} Zanr={detail.Zanr} Autor={detail.Autor} Zanr={detail.Zanr} nakladnik={detail.nakladnik}/>
+            <KnjigaItem key={detail.sifra} sifra={detail.sifra} Naslov={detail.Naslov} Autor={detail.Autor} Zanr={detail.Zanr} nakladnik={detail.nakladnik}/>
           )
         })
         return(
