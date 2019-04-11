@@ -2,6 +2,11 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 
 class Navbar extends Component{
+	logOut(event){
+		event.preventDefault()
+		localStorage.removeItem('usertoken')
+		this.props.history.push('/')
+	}
 	render(){
 		return(
 			<div>
@@ -33,8 +38,9 @@ class Navbar extends Component{
 				  <div className="nav-wrapper">
 				    <a href="/" className="brand-logo">Knjižnica</a>
 				    <ul className="right hide-on-med-and-down">
-				      <li><a href="sass.html">Nešto</a></li>
-				      <li><a href="badges.html">Nešto drugo</a></li>
+				      <li><Link to="/">Landing</Link></li>
+				      <li><Link to="/login">Login</Link></li>
+				      <li><Link to="/register">Register</Link></li>
 				 
 				      <li><a className="dropdown-trigger" href="#!" data-target="dropdown">Nakladnik<i className="material-icons right"></i></a></li>
 				      <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Izdavatelj<i className="material-icons right"></i></a></li>

@@ -18,6 +18,10 @@ import IzdavanjeDetail from './izdavanje/IzdavanjeDetail'
 import AddIzdavanje from './izdavanje/AddIzdavanje'
 import EditIzdavanje from './izdavanje/EditIzdavanje'
 
+import Login from './Login'
+import Register from './Register'
+import Profile from './Profile'
+
 const Main = () => (
 	<main>
 		<Switch>
@@ -38,6 +42,9 @@ const Main = () => (
 			<Route exact path='/izdavanje/dodaj' component={AddIzdavanje} />
 			<Route exact path='/izdavanje/:sifra' component={IzdavanjeDetail} />
 			<Route exact path='/izdavanje/edit/:sifra' component={EditIzdavanje} />
+			<Route exact path='/register' component={Register} />
+			<Route exact path='/login' component={Login} />
+			<Route exact path='/profile' component={Profile} />
 		</Switch>
 	</main>
 )
