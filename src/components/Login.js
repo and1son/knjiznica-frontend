@@ -11,10 +11,11 @@ class Login extends Component{
       data: user
     })
     .then(response =>{
-      localStorage.setItem('usertoken', response.data)
+      localStorage.setItem('usertoken', response.data.token)
       if(!response.error){
         this.props.history.push('/')
-        return response.data
+        //console.log(response.data.token)
+        return response.data.token
       }
     }).catch(err=>console.log(err))
   }
@@ -40,7 +41,7 @@ class Login extends Component{
                 <label htmlFor="email">email</label>
               </div>
               <div className="input-field">
-                <input type="text" name="password" ref="password" />
+                <input type="password" name="password" ref="password" />
                 <label htmlFor="password">password</label>
               </div>
               <input type="submit" value="Save" className="btn" />
